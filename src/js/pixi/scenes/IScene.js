@@ -3,17 +3,7 @@ export default class SingleTextureSingleBaseTexture {
 		this._app = app;
 		this._gui = gui;
 
-		this._minObjects = 0;
-		this._defaultObjects = 10000;
-		this._maxObjects = 100000;
-
-		this.objectCount = this._defaultObjects;
-
-		this.guiController = null;
-
 		this.root = new PIXI.Container();
-
-		this._create();
 	}
 
 	update(delta) {
