@@ -1,6 +1,7 @@
 import SingleTextureSingleBaseTexture from './pixi/scenes/SingleTextureSingleBaseTexture.js';
 import MultipleTexturesMultipleBaseTextures from './pixi/scenes/MultipleTexturesMultipleBaseTextures.js';
 import MultipleTexturesSingleBaseTexture from './pixi/scenes/MultipleTexturesSingleBaseTexture.js';
+import Graphics from './pixi/scenes/Graphics.js';
 
 export default class SceneController {
 	constructor(app, stats, gui) {
@@ -11,18 +12,22 @@ export default class SceneController {
 		this._scenes = [
 			new SingleTextureSingleBaseTexture(app, gui),
 			new MultipleTexturesMultipleBaseTextures(app, gui),
-			new MultipleTexturesSingleBaseTexture(app, gui)
+			new MultipleTexturesSingleBaseTexture(app, gui),
+			new Graphics(app, gui)
 		];
 
+		const urlParams = new URLSearchParams(window.location.search);
+
 		this._guiData = {
-			scene: 0,
+			scene: parseInt(urlParams.get('scene'), 10) || 0,
 			objectCount: 10000
 		};
 
 		const guiSceneController = this._gui.add(this._guiData, 'scene', {
-			'1 BaseTexture 1 Texture': 0,
-			'12 BaseTextures 12 Textures': 1,
-			'1 BaseTexture 12 Texture': 2
+			'Sprite: Single Texture': 0,
+			'Sprite: 12 Texures': 1,
+			'SpriteSheet': 2,
+			'Graphics': 3
 		});
 
 		guiSceneController.onChange((value) => {
