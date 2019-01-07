@@ -56,8 +56,10 @@ export default class SingleTextureSingleBaseTexture {
     }
 
     _onGuiChange(value) {
-        for (let i = 0; i < this.root.children.length; ++i) {
-            this.root.children[i].visible = i <= value;
+        if  (value > this.root.children.length) {
+            this._create();
+        } else {
+            this.root.children.length = value;
         }
     }
 }
