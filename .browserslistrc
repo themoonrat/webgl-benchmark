@@ -1,8 +1,7 @@
-Chrome 72
-
-#last 1 version
-#> 0.2%
-#not dead
-#maintained node versions
-#ie 11
-#Firefox ESR
+#Chrome 72
+last 1 version
+> 0.2%
+not dead
+maintained node versions
+ie 11
+Firefox ESR

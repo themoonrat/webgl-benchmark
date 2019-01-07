@@ -25,7 +25,7 @@ frameDiv.append(gui.domElement);
 document.body.append(frameDiv);
 
 loadPixi(stats, gui)
-    .then((pixiApp) => {
-        const sceneController = new SceneController(pixiApp, stats, gui);
-        sceneController.start();
-    })
+	.then((app) => {
+		const sceneController = new SceneController(app, stats, gui);
+		sceneController.start();
+	})
