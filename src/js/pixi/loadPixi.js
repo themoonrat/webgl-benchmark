@@ -1,18 +1,16 @@
 import polyfillPixi from '../../vendor/polyfill-pixi.js';
 import loadScript from '../loadScript.js';
+import storage from '../storage.js';
 import PixiApp from './PixiApp.js';
 
 export default function loadPixi(stats, gui) {
 	let resolvePromise;
 
-	const urlParams = new URLSearchParams(window.location.search);
-
-	const version = urlParams.get('version') || 'release';
-	const branchName = version.match('^[0-9.,]+$') ? `v${version}` : `${version}`;
-
 	const guiData = {
-		version: branchName
+		version: storage.get('version') || 'release'
 	};
+
+	storage.set('version', guiData.version);
 
 	const guiController = gui.add(guiData, 'version', [
 		"dev", "master", "release",
@@ -21,15 +19,17 @@ export default function loadPixi(stats, gui) {
 		"v4.3.5", "v4.4.4", "v4.5.6", "v4.6.2", "v4.7.3", "v4.8.4",
 		"v5.0.0-alpha", "v5.0.0-alpha.2", "v5.0.0-alpha.3"
 	])
-	guiController.onChange(() => {
-		window.location.href = `${location.protocol}//${location.host}${location.pathname}?version=${guiData.version}`;
+	guiController.onChange((version) => {
+		storage.set('version', version);
+
+		window.location.href = storage.url().href;
 	});
 
-	const libUrl = `https://pixijs.download/${branchName}/pixi.js`;
+	const libUrl = `https://pixijs.download/${guiData.version}/pixi.js`;
 
 	loadScript(libUrl)
 		.catch(() => {
-			console.log(`Could not load Pixi\n[${branchName}] from [${libUrl}]\nMay not be a valid version`);
+			console.log(`Could not load Pixi\n[${guiData.version}] from [${libUrl}]\nMay not be a valid version`);
 		})
 		.then(() => {
 			if (window.PIXI) {

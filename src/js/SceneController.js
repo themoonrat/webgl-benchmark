@@ -1,3 +1,5 @@
+import storage from './storage.js';
+
 import SingleTextureSingleBaseTexture from './pixi/scenes/SingleTextureSingleBaseTexture.js';
 import MultipleTexturesMultipleBaseTextures from './pixi/scenes/MultipleTexturesMultipleBaseTextures.js';
 import MultipleTexturesSingleBaseTexture from './pixi/scenes/MultipleTexturesSingleBaseTexture.js';
@@ -16,14 +18,22 @@ export default class SceneController {
 			new Graphics(app, gui)
 		];
 
-		const urlParams = new URLSearchParams(window.location.search);
 
 		this._guiData = {
-			scene: parseInt(urlParams.get('scene'), 10) || 0,
-			objectCount: parseInt(urlParams.get('objectCount'), 10) || parseInt(localStorage.getItem('objectCount'), 10) || 10000
+			scene: parseInt(storage.get('scene'), 10),
+			objectCount: parseInt(storage.get('objectCount'), 10)
 		};
-		
-		localStorage.setItem('objectCount', this._guiData.objectCount);
+
+		if (Number.isNaN(this._guiData.scene)) {
+			this._guiData.scene = 0;
+		}
+
+		if (Number.isNaN(this._guiData.objectCount)) {
+			this._guiData.objectCount = 10000;
+		}
+
+		storage.set('scene', this._guiData.scene);
+		storage.set('objectCount', this._guiData.objectCount);
 
 		const guiSceneController = this._gui.add(this._guiData, 'scene', {
 			'Sprite: Single Texture': 0,
@@ -33,12 +43,13 @@ export default class SceneController {
 		});
 
 		guiSceneController.onChange((value) => {
+			storage.set('scene', value);
 			this.switch(value);
 		});
 
 		const guiObjectCountController = this._gui.add(this._guiData, 'objectCount', 0, 100000, 1000);
 		guiObjectCountController.onChange((value) => {
-			localStorage.setItem('objectCount', value);
+			storage.set('objectCount', value);
 			this._scenes[this._guiData.scene].changeObjectCount(value);
 		});
 
