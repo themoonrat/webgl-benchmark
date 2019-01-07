@@ -16,7 +16,10 @@ export default class SingleTextureSingleBaseTexture {
 		this._create();
 	}
 
-	update() {
+	update(delta) {
+		for (let i = 0; i < this.root.children.length; ++i) {
+			this.root.children[i].rotation += 0.1 * delta;
+		}
 	}
 
 	start() {

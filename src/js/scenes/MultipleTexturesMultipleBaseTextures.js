@@ -5,14 +5,6 @@ export default class MultipleTexturesMultipleBaseTextures extends IScene {
 		super(app, gui);
 	}
 
-	update(delta) {
-		if (this.root) {
-			for (let i = 0; i < this.root.children.length; ++i) {
-				this.root.children[i].rotation += 0.1 * delta;
-			}
-		}
-	}
-
 	_create() {
 		let bunnyIndex = 1;
 

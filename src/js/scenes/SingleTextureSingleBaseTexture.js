@@ -5,12 +5,6 @@ export default class SingleTextureSingleBaseTexture extends IScene {
 		super(app, gui);
 	}
 
-	update(delta) {
-		for (let i = 0; i < this.root.children.length; ++i) {
-			this.root.children[i].rotation += 0.1 * delta;
-		}
-	}
-
 	_create() {
 		for (let i = this.root.children.length; i < this.objectCount; ++i) {
 			const sprite = PIXI.Sprite.from('images/bunny1.png');
