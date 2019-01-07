@@ -1,20 +1,24 @@
+import IScene from './IScene.js';
 
+export default class MultipleTexturesMultipleBaseTextures extends IScene {
+    constructor(app, gui) {
+        super(app, gui);
+    }
 
-export default class MultipleTexturesMultipleBaseTextures {
-    constructor(pixiApp, gui) {
-        this._pixiApp = pixiApp;
-        this._gui = gui;
+    update(delta) {
+        if (this.root) {
+            for (let i = 0; i < this.root.children.length; ++i) {
+                this.root.children[i].rotation += 0.1 * delta;
+            }
+        }
+    }
 
-        this.guiController = null;
-        this.sprites = 100000;
-
-        this.root = new PIXI.Container();
-
-        const rows = Math.floor(Math.sqrt(this.sprites));
+    _create() {
+        const rows = Math.floor(Math.sqrt(this.objectCount));
         const columns = rows;
 
-        const spacingRows = this._pixiApp.screen.width / rows;
-        const spacingColumns = this._pixiApp.screen.height / columns;
+        const spacingRows = this._app.screen.width / rows;
+        const spacingColumns = this._app.screen.height / columns;
 
         let bunnyIndex = 1;
 
@@ -30,40 +34,12 @@ export default class MultipleTexturesMultipleBaseTextures {
         }
 
         // Add any not evenly spaced out in the middle
-        for (let i = this.root.children.length; i < this.sprites; ++i) {
+        for (let i = this.root.children.length; i < this.objectCount; ++i) {
             const sprite = PIXI.Sprite.from(`images/bunny${bunnyIndex}.png`);
             sprite.anchor.set(0.5);
             sprite.position.set(screen.width / 2, screen.height / 2);
             this.root.addChild(sprite);
             bunnyIndex === 12 ? bunnyIndex = 1 : ++bunnyIndex;
-        }
-    }
-
-    update(delta) {
-        for (let i = 0; i < this.root.children.length; ++i) {
-            this.root.children[i].rotation += 0.1 * delta;
-        }
-    }
-
-    start() {
-        this._pixiApp.stage.addChild(this.root);
-
-        if (!this.guiController) {
-            this.guiController = this._gui.add(this, 'sprites', 0, 100000, 1000);
-            this.guiController.onChange((value) => {
-                for (let i = 0; i < this.root.children.length; ++i) {
-                    this.root.children[i].visible = i <= value;
-                }
-            });
-        }
-    }
-
-    stop() {
-        this._pixiApp.stage.removeChild(this.root);
-
-        if (this.guiController) {
-            this._gui.remove(this.guiController);
-            this.guiController = null;
         }
     }
 }

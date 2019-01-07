@@ -3,25 +3,25 @@ import MultipleTexturesMultipleBaseTextures from './scenes/MultipleTexturesMulti
 import MultipleTexturesSingleBaseTexture from './scenes/MultipleTexturesSingleBaseTexture.js';
 
 export default class SceneController {
-    constructor(pixiApp, stats, gui) {
-        this._pixiApp = pixiApp;
-        this._pixiApp.ticker.add(this.update, this, 10);
+    constructor(app, stats, gui) {
+        this._app = app;
+        this._app.ticker.add(this.update, this, 10);
 
         this._stats = stats;
         this._gui = gui;
 
         this._scenes = [
-            new SingleTextureSingleBaseTexture(pixiApp, gui),
-            new MultipleTexturesMultipleBaseTextures(pixiApp, gui),
-            new MultipleTexturesSingleBaseTexture(pixiApp, gui)
+            new SingleTextureSingleBaseTexture(app, gui),
+            new MultipleTexturesMultipleBaseTextures(app, gui),
+            new MultipleTexturesSingleBaseTexture(app, gui)
         ];
 
         for (const scene of this._scenes) {
             scene.stop();
         }
 
-        if (this._pixiApp.renderer.plugins.prepare) {
-            this._pixiApp.renderer.plugins.prepare.upload(this._pixiApp.stage);
+        if (this._app.renderer.plugins.prepare) {
+            this._app.renderer.plugins.prepare.upload(this._app.stage);
         }
 
         this.scene = 0;
@@ -50,7 +50,7 @@ export default class SceneController {
     }
 
     start() {
-        this._pixiApp.start();
+        this._app.start();
         this._stats.domElement.style.visibility = 'visible';
         this._gui.domElement.style.visibility = 'visible';
     }
