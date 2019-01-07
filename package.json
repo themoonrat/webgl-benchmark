@@ -1,7 +1,10 @@
 {
   "name": "webgl-benchmark",
   "version": "0.1.0",
-  "description": "",
+  "description": "Benchmark WebGL performance",
+  "keywords": ["WebGL", "Pixi", "Pixijs", "Benchmark"],
+  "author": "Dave Moore",
+  "license": "MIT",
   "private": false,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,9 +12,15 @@
     "dev": "webpack --config webpack.dev.js --progress --profile",
     "start": "webpack-dev-server --config webpack.dev.js --progress --profile"
   },
-  "keywords": [],
-  "author": "Dave Moore",
-  "license": "ISC",
+  "main": "src/js/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/themoonrat/webgl-benchmark.git"
+  },
+  "bugs": {
+    "url": "https://github.com/themoonrat/webgl-benchmark/issues"
+  },
+  "homepage": "https://github.com/themoonrat/webgl-benchmark#readme",
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
