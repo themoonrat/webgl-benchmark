@@ -20,8 +20,10 @@ export default class SceneController {
 
 		this._guiData = {
 			scene: parseInt(urlParams.get('scene'), 10) || 0,
-			objectCount: 10000
+			objectCount: parseInt(urlParams.get('objectCount'), 10) || localStorage.getItem('objectCount') || 10000
 		};
+		
+		localStorage.setItem('objectCount', this._guiData.objectCount);
 
 		const guiSceneController = this._gui.add(this._guiData, 'scene', {
 			'Sprite: Single Texture': 0,
@@ -36,6 +38,7 @@ export default class SceneController {
 
 		const guiObjectCountController = this._gui.add(this._guiData, 'objectCount', 0, 100000, 1000);
 		guiObjectCountController.onChange((value) => {
+			localStorage.setItem('objectCount', value)
 			this._scenes[this._guiData.scene].changeObjectCount(value);
 		});
 
