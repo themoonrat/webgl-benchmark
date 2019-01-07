@@ -17,8 +17,7 @@ export default class SceneController {
         ];
 
         for (const scene of this._scenes) {
-            scene.root.visible = false;
-            this._pixiApp.stage.addChild(scene.root);
+            scene.stop();
         }
 
         if (this._pixiApp.renderer.plugins.prepare) {
@@ -65,13 +64,10 @@ export default class SceneController {
             this.scene = index;
 
             for (const scene of this._scenes) {
-                scene.root.visible = false;
                 scene.stop();
             }
 
-            const newScene = this._scenes[index];
-            newScene.root.visible = true;
-            newScene.start();
+            this._scenes[index].start();
         }
     }
 }

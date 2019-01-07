@@ -14,7 +14,7 @@ export default function loadPixi(stats, gui) {
         version: branchName
     };
 
-    const guiController = gui.add(guiObject, 'pixiVersion', [
+    const guiController = gui.add(guiObject, 'version', [
         "dev", "master", "release",
         "v3.0.11",
         "v4.0.3", "v4.1.1", "v4.2.3",

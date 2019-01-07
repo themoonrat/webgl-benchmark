@@ -40,6 +40,8 @@ export default class SingleTextureSingleBaseTexture {
     }
 
     start() {
+        this._pixiApp.stage.addChild(this.root);
+
         if (!this.guiController) {
             this.guiController = this._gui.add(this, 'sprites', 0, 100000, 1000);
             this.guiController.onChange((value) => {
@@ -51,6 +53,8 @@ export default class SingleTextureSingleBaseTexture {
     }
 
     stop() {
+        this._pixiApp.stage.removeChild(this.root);
+
         if (this.guiController) {
             this._gui.remove(this.guiController);
             this.guiController = null;

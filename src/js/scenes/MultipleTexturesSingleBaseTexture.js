@@ -7,7 +7,7 @@ export default class MultipleTextureSingleBaseTexture {
         this.sprites = 100000;
 
         this.root = new PIXI.Container();
-
+        
         const rows = Math.floor(Math.sqrt(this.sprites));
         const columns = rows;
 
@@ -44,6 +44,8 @@ export default class MultipleTextureSingleBaseTexture {
     }
 
     start() {
+        this._pixiApp.stage.addChild(this.root);
+
         if (!this.guiController) {
             this.guiController = this._gui.add(this, 'sprites', 0, 100000, 1000);
             this.guiController.onChange((value) => {
@@ -55,6 +57,8 @@ export default class MultipleTextureSingleBaseTexture {
     }
 
     stop() {
+        this._pixiApp.stage.removeChild(this.root);
+
         if (this.guiController) {
             this._gui.remove(this.guiController);
             this.guiController = null;
