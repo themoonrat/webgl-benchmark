@@ -16,14 +16,6 @@ export default class SceneController {
             new MultipleTexturesSingleBaseTexture(app, gui)
         ];
 
-        for (const scene of this._scenes) {
-            scene.stop();
-        }
-
-        if (this._app.renderer.plugins.prepare) {
-            this._app.renderer.plugins.prepare.upload(this._app.stage);
-        }
-
         this.scene = 0;
 
         const guiController = this._gui.add(this, 'scene', {

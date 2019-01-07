@@ -24,6 +24,10 @@ export default class SingleTextureSingleBaseTexture {
 
         this._create();
 
+        if (this._app.renderer.plugins.prepare) {
+            this._app.renderer.plugins.prepare.upload(this._app.stage);
+        }
+
         if (!this.guiController) {
             this.guiController = this._gui.add(this, 'objectCount', this._minObjects, this._maxObjects, Math.round(this._maxObjects / 100));
             this.guiController.onChange(this._onGuiChange.bind(this));
@@ -44,10 +48,11 @@ export default class SingleTextureSingleBaseTexture {
     }
 
     _destroy(){
-        if (this.root) {
-            this.root.destroy({children: true});
-            this.root = new PIXI.Container();
+        for (let i = 0; i < this.root.children.length; ++i) {
+            this.root.children[i].destroy();
+            this.root.children[i] = null;
         }
+        this.root.children.length = 0;
     }
 
     _onGuiChange(value) {
