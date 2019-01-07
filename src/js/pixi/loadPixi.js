@@ -1,6 +1,6 @@
-import polyfillPixi from '../vendor/polyfill-pixi.js';
+import polyfillPixi from '../../vendor/polyfill-pixi.js';
+import loadScript from '../loadScript.js';
 import PixiApp from './PixiApp.js';
-import loadScript from './loadScript.js';
 
 export default function loadPixi(stats, gui) {
 	let resolvePromise;
@@ -10,11 +10,11 @@ export default function loadPixi(stats, gui) {
 	const version = urlParams.get('version') || 'release';
 	const branchName = version.match('^[0-9.,]+$') ? `v${version}` : `${version}`;
 
-	const guiObject = {
+	const guiData = {
 		version: branchName
 	};
 
-	const guiController = gui.add(guiObject, 'version', [
+	const guiController = gui.add(guiData, 'version', [
 		"dev", "master", "release",
 		"v3.0.11",
 		"v4.0.3", "v4.1.1", "v4.2.3",
@@ -22,7 +22,7 @@ export default function loadPixi(stats, gui) {
 		"v5.0.0-alpha", "v5.0.0-alpha.2", "v5.0.0-alpha.3"
 	])
 	guiController.onChange(() => {
-		window.location.href = `${location.protocol}//${location.host}${location.pathname}?version=${guiObject.version}`;
+		window.location.href = `${location.protocol}//${location.host}${location.pathname}?version=${guiData.version}`;
 	});
 
 	const libUrl = `https://pixijs.download/${branchName}/pixi.js`;

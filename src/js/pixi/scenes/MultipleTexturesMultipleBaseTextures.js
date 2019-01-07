@@ -5,10 +5,10 @@ export default class MultipleTexturesMultipleBaseTextures extends IScene {
 		super(app, gui);
 	}
 
-	_create() {
+	_create(objectCount) {
 		let bunnyIndex = 1;
 
-		for (let i = this.root.children.length; i < this.objectCount; ++i) {
+		for (let i = this.root.children.length; i < objectCount; ++i) {
 			const sprite = PIXI.Sprite.from(`images/bunny${bunnyIndex}.png`);
 			sprite.anchor.set(0.5);
 			sprite.position.set(Math.random() * this._app.screen.width, Math.random() * this._app.screen.height);
