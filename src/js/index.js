@@ -19,6 +19,7 @@ stats.domElement.id = 'stats';
 // setup shared gui instance
 const gui = new dat.GUI({ autoPlace: false });
 gui.domElement.id = 'gui';
+gui.width = 300;
 
 // create a centralised div for other elements to sit within
 const frameDiv = document.createElement('div');

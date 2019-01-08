@@ -1,19 +1,25 @@
-export default class SingleTextureSingleBaseTexture {
+export default class IScene {
 	constructor(app, gui) {
 		this._app = app;
 		this._gui = gui;
 
-		this.root = new PIXI.Container();
+		this.title = '';
+		this.description = '';
+
+		this._root = new PIXI.Container();
 	}
 
 	update(delta) {
-		for (let i = 0; i < this.root.children.length; ++i) {
-			this.root.children[i].rotation += 0.1 * delta;
+		for (let i = 0; i < this._root.children.length; ++i) {
+			this._root.children[i].rotation += 0.1 * delta;
 		}
 	}
 
 	start(objectCount) {
-		this._app.stage.addChild(this.root);
+		console.log(`Scene Changed: ${this.title}`);
+		console.log(this.description);
+
+		this._app.stage.addChild(this._root);
 		this._app.ticker.add(this.update, this);
 
 		this._create(objectCount);
@@ -30,11 +36,11 @@ export default class SingleTextureSingleBaseTexture {
 	}
 
 	changeObjectCount(target) {
-		if (target === this.root.children.length) {
+		if (target === this._root.children.length) {
 			return;
 		}
 
-		if (target > this.root.children.length) {
+		if (target > this._root.children.length) {
 			this._create(target);
 		} else {
 			this._destroy(target)
@@ -46,10 +52,10 @@ export default class SingleTextureSingleBaseTexture {
 	}
 
 	_destroy(objectCount = 0) {
-		for (let i = objectCount; i < this.root.children.length; ++i) {
-			this.root.children[i].destroy();
-			this.root.children[i] = null;
+		for (let i = objectCount; i < this._root.children.length; ++i) {
+			this._root.children[i].destroy();
+			this._root.children[i] = null;
 		}
-		this.root.children.length = objectCount;
+		this._root.children.length = objectCount;
 	}
 }

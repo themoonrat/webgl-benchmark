@@ -1,9 +1,10 @@
 import storage from './storage.js';
 
-import SingleTextureSingleBaseTexture from './pixi/scenes/SingleTextureSingleBaseTexture.js';
-import MultipleTexturesMultipleBaseTextures from './pixi/scenes/MultipleTexturesMultipleBaseTextures.js';
-import MultipleTexturesSingleBaseTexture from './pixi/scenes/MultipleTexturesSingleBaseTexture.js';
-import Graphics from './pixi/scenes/Graphics.js';
+import GraphicsComplex from './pixi/scenes/GraphicsComplex.js';
+import GraphicsSimple from './pixi/scenes/GraphicsSimple.js';
+import Spritesheet from './pixi/scenes/Spritesheet.js';
+import SpritesMultipleTextures from './pixi/scenes/SpritesMultipleTextures.js';
+import SpritesSingleTexture from './pixi/scenes/SpritesSingleTexture.js';
 
 export default class SceneController {
 	constructor(app, stats, gui) {
@@ -12,10 +13,11 @@ export default class SceneController {
 		this._gui = gui;
 
 		this._scenes = [
-			new SingleTextureSingleBaseTexture(app, gui),
-			new MultipleTexturesMultipleBaseTextures(app, gui),
-			new MultipleTexturesSingleBaseTexture(app, gui),
-			new Graphics(app, gui)
+			new SpritesSingleTexture(app, gui),
+			new SpritesMultipleTextures(app, gui),
+			new Spritesheet(app, gui),
+			new GraphicsSimple(app, gui),
+			new GraphicsComplex(app, gui)
 		];
 
 
@@ -35,12 +37,12 @@ export default class SceneController {
 		storage.set('scene', this._guiData.scene);
 		storage.set('objectCount', this._guiData.objectCount);
 
-		const guiSceneController = this._gui.add(this._guiData, 'scene', {
-			'Sprite: Single Texture': 0,
-			'Sprite: 12 Texures': 1,
-			'SpriteSheet': 2,
-			'Graphics': 3
-		});
+		const guiEntries = {};
+		this._scenes.forEach((scene, index) => {
+			guiEntries[scene.title] = index;
+		})
+
+		const guiSceneController = this._gui.add(this._guiData, 'scene', guiEntries);
 
 		guiSceneController.onChange((value) => {
 			storage.set('scene', value);

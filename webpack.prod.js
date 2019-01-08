@@ -15,7 +15,7 @@ module.exports = merge(common, {
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
-            title: 'WebGL Mark',
+            title: 'WebGL Benchmark',
             meta: {
                 'viewport': 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no, minimal-ui',
                 'apple-mobile-web-app-capable': 'yes'
