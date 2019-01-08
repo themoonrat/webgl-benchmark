@@ -1,0 +1,320 @@
+{
+	"frames": {
+		"spritesheets/bunny1.png": {
+			"frame": {
+				"x": 4,
+				"y": 4,
+				"w": 25,
+				"h": 32
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 25,
+				"h": 32
+			},
+			"sourceSize": {
+				"w": 25,
+				"h": 32
+			},
+			"anchor": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"spritesheets/bunny2.png": {
+			"frame": {
+				"x": 29,
+				"y": 4,
+				"w": 25,
+				"h": 32
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 25,
+				"h": 32
+			},
+			"sourceSize": {
+				"w": 25,
+				"h": 32
+			},
+			"anchor": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"spritesheets/bunny3.png": {
+			"frame": {
+				"x": 54,
+				"y": 4,
+				"w": 25,
+				"h": 32
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 25,
+				"h": 32
+			},
+			"sourceSize": {
+				"w": 25,
+				"h": 32
+			},
+			"anchor": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"spritesheets/bunny4.png": {
+			"frame": {
+				"x": 79,
+				"y": 4,
+				"w": 25,
+				"h": 32
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 25,
+				"h": 32
+			},
+			"sourceSize": {
+				"w": 25,
+				"h": 32
+			},
+			"anchor": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"spritesheets/bunny5.png": {
+			"frame": {
+				"x": 4,
+				"y": 36,
+				"w": 25,
+				"h": 32
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 25,
+				"h": 32
+			},
+			"sourceSize": {
+				"w": 25,
+				"h": 32
+			},
+			"anchor": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"spritesheets/bunny6.png": {
+			"frame": {
+				"x": 29,
+				"y": 36,
+				"w": 25,
+				"h": 32
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 25,
+				"h": 32
+			},
+			"sourceSize": {
+				"w": 25,
+				"h": 32
+			},
+			"anchor": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"spritesheets/bunny7.png": {
+			"frame": {
+				"x": 54,
+				"y": 36,
+				"w": 25,
+				"h": 32
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 25,
+				"h": 32
+			},
+			"sourceSize": {
+				"w": 25,
+				"h": 32
+			},
+			"anchor": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"spritesheets/bunny8.png": {
+			"frame": {
+				"x": 79,
+				"y": 36,
+				"w": 25,
+				"h": 32
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 25,
+				"h": 32
+			},
+			"sourceSize": {
+				"w": 25,
+				"h": 32
+			},
+			"anchor": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"spritesheets/bunny9.png": {
+			"frame": {
+				"x": 4,
+				"y": 68,
+				"w": 25,
+				"h": 32
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 25,
+				"h": 32
+			},
+			"sourceSize": {
+				"w": 25,
+				"h": 32
+			},
+			"anchor": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"spritesheets/bunny10.png": {
+			"frame": {
+				"x": 29,
+				"y": 68,
+				"w": 25,
+				"h": 32
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 25,
+				"h": 32
+			},
+			"sourceSize": {
+				"w": 25,
+				"h": 32
+			},
+			"anchor": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"spritesheets/bunny11.png": {
+			"frame": {
+				"x": 54,
+				"y": 68,
+				"w": 25,
+				"h": 32
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 25,
+				"h": 32
+			},
+			"sourceSize": {
+				"w": 25,
+				"h": 32
+			},
+			"anchor": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"spritesheets/bunny12.png": {
+			"frame": {
+				"x": 79,
+				"y": 68,
+				"w": 25,
+				"h": 32
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 25,
+				"h": 32
+			},
+			"sourceSize": {
+				"w": 25,
+				"h": 32
+			},
+			"anchor": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		}
+	},
+	"animations": {
+		"spritesheets/bunny": [
+			"spritesheets/bunny1.png",
+			"spritesheets/bunny2.png",
+			"spritesheets/bunny3.png",
+			"spritesheets/bunny4.png",
+			"spritesheets/bunny5.png",
+			"spritesheets/bunny6.png",
+			"spritesheets/bunny7.png",
+			"spritesheets/bunny8.png",
+			"spritesheets/bunny9.png",
+			"spritesheets/bunny10.png",
+			"spritesheets/bunny11.png",
+			"spritesheets/bunny12.png"
+		]
+	},
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "bunnies.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 108,
+			"h": 104
+		},
+		"scale": "1",
+		"smartupdate": "$TexturePacker:SmartUpdate:050c9b6ac791192efe90d226f882d667:ad4813d7cf97e154e5c4f372d57af76f:62d956865a4c5c48a07889147e78678d$"
+	}
+}

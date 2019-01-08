@@ -1,0 +1,73 @@
+*, ::after, ::before {
+	box-sizing: border-box;
+}
+
+* {
+	-webkit-touch-callout: none;
+	-ms-touch-action: none;
+	touch-action: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	-webkit-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	text-size-adjust: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-user-modify: read-only;
+}
+
+html {
+	-ms-interpolation-mode: nearest-neighbor;
+}
+
+body {
+	font-size: 16px;
+	color: #cfd4db;
+	background-color: #000000;
+	cursor: default;
+	line-height: 1.3;
+	overflow: hidden;
+	padding:0;
+	margin:0;
+}
+
+canvas {
+	position: absolute;
+	outline: none;
+}
+
+#frame {
+	max-width: 960px;
+	max-height: 540px;
+	width: 100%;
+	height: 100%;
+}
+
+.center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+#stats {
+	position: absolute;
+	visibility: hidden;
+	left: 0;
+	z-index: 1;
+}
+
+#gui {
+	position: absolute;
+	visibility: hidden;
+	right: 0;
+	z-index: 1;
+}
+
