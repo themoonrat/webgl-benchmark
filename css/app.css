@@ -69,5 +69,6 @@ canvas {
 	visibility: hidden;
 	right: 0;
 	z-index: 1;
+	opacity: 0.95;
 }
 
