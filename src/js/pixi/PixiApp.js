@@ -45,7 +45,7 @@ export default class PixiApp {
 			roundPixels: false,
 			forceFXAA: false,
 			legacy: false,
-			powerPreference: ''
+			powerPreference: 'high-performance'
 		}, options);
 
 		this._stats = stats;
