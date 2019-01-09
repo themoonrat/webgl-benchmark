@@ -9,10 +9,9 @@ export default class SpritesSingleTexture extends IScene {
 	}
 
 	_create(objectCount) {
-		for (let i = this._app.scene.children.list.length; i < objectCount; ++i) {
+		for (let i = this._children.length; i < objectCount; ++i) {
 			const sprite = this._app.scene.add.sprite(0, 0, 'images/bunny1.png');
 			sprite.setPosition(Math.random() * this._app.screen.width, Math.random() * this._app.screen.height);
-
 		}
 	}
 }

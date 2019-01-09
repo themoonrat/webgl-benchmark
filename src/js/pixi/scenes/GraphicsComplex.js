@@ -11,10 +11,10 @@ export default class GraphicsComplex extends IScene {
 	}
 
 	_create(objectCount) {
-		for (let i = this._root.children.length; i < objectCount; ++i) {
+		for (let i = this._children.length; i < objectCount; ++i) {
 			const graphic = new PIXI.Graphics();
-			graphic.beginFill(this._colours[this._root.children.length % this._colours.length]);
-			const type = this._root.children.length % 4;
+			graphic.beginFill(this._colours[this._children.length % this._colours.length]);
+			const type = this._children.length % 4;
 			if (type === 0) {
 				graphic.drawStar(0, 0, 5, 30, 20, 1);
 			} else if (type === 1) {
@@ -26,6 +26,7 @@ export default class GraphicsComplex extends IScene {
 			}
 
 			graphic.position.set(Math.random() * this._app.screen.width, Math.random() * this._app.screen.height);
+
 			this._root.addChild(graphic);
 		}
 	}

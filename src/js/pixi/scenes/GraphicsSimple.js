@@ -11,11 +11,12 @@ export default class GraphicsSimple extends IScene {
 	}
 
 	_create(objectCount) {
-		for (let i = this._root.children.length; i < objectCount; ++i) {
+		for (let i = this._children.length; i < objectCount; ++i) {
 			const graphic = new PIXI.Graphics();
-			graphic.beginFill(this._colours[this._root.children.length % this._colours.length]);
+			graphic.beginFill(this._colours[this._children.length % this._colours.length]);
 			graphic.drawRect(-15, -15, 30, 30);
 			graphic.position.set(Math.random() * this._app.screen.width, Math.random() * this._app.screen.height);
+
 			this._root.addChild(graphic);
 		}
 	}

@@ -3,14 +3,19 @@ export default class IScene {
 		this._app = app;
 		this._gui = gui;
 
-		this._title = '';
-		this._description = '';
+		this._children = this._app.scene.children.list;
 
+		this.title = '';
+		this.description = '';
+
+		this._targetMS = 1000 / 60;
 	}
 
-	update(time, delta) {
-		for (let i = 0; i < this._app.scene.children.list.length; ++i) {
-			this._app.scene.children.list[i].rotation += 0.016 * delta;
+	update(time, deltaMS) {
+		const delta = deltaMS / this._targetMS;
+
+		for (let i = 0; i < this._children.length; ++i) {
+			this._children[i].rotation += 0.1 * delta;
 		}
 	}
 
@@ -24,21 +29,16 @@ export default class IScene {
 	}
 
 	stop() {
-		//this._app.scene.remove(this._root);
 		this._app.scene.sys.events.off('update', this.update, this);
 
 		this._destroy();
 	}
 
-	changeObjectCount(target) {
-		if (target === this._app.scene.children.list.length) {
-			return;
-		}
-
-		if (target > this._app.scene.children.list.length) {
-			this._create(target);
-		} else {
-			this._destroy(target)
+	changeObjectCount(objectCount) {
+		if (objectCount > this._children.length) {
+			this._create(objectCount);
+		} else if (objectCount < this._children.length) {
+			this._destroy(objectCount)
 		}
 	}
 
@@ -47,6 +47,6 @@ export default class IScene {
 	}
 
 	_destroy(objectCount = 0) {
-		this._app.scene.children.list.length = objectCount;
+		this._children.length = objectCount;
 	}
 }
