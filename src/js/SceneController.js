@@ -1,10 +1,7 @@
 import storage from './storage.js';
 
-import GraphicsComplex from './pixi/scenes/GraphicsComplex.js';
-import GraphicsSimple from './pixi/scenes/GraphicsSimple.js';
-import Spritesheet from './pixi/scenes/Spritesheet.js';
-import SpritesMultipleTextures from './pixi/scenes/SpritesMultipleTextures.js';
-import SpritesSingleTexture from './pixi/scenes/SpritesSingleTexture.js';
+import pixiScenes from './pixi/pixiScenes.js'
+import phaserScenes from './phaser/phaserScenes.js'
 
 export default class SceneController {
 	constructor(app, stats, gui) {
@@ -12,14 +9,13 @@ export default class SceneController {
 		this._stats = stats;
 		this._gui = gui;
 
-		this._scenes = [
-			new SpritesSingleTexture(app, gui),
-			new SpritesMultipleTextures(app, gui),
-			new Spritesheet(app, gui),
-			new GraphicsSimple(app, gui),
-			new GraphicsComplex(app, gui)
-		];
+		this._scenes = [];
 
+		const sceneList = storage.get('library') === 'Phaser' ? phaserScenes : pixiScenes;
+
+		for (const Scene of sceneList) {
+			this._scenes.push(new Scene(app, gui));
+		}
 
 		this._guiData = {
 			scene: parseInt(storage.get('scene'), 10),
@@ -46,7 +42,7 @@ export default class SceneController {
 
 		guiSceneController.onChange((value) => {
 			storage.set('scene', value);
-			this.switch(value);
+			this._switch(value);
 		});
 
 		const guiObjectCountController = this._gui.add(this._guiData, 'objectCount', 0, 100000, 1000);
@@ -55,26 +51,20 @@ export default class SceneController {
 			this._scenes[this._guiData.scene].changeObjectCount(value);
 		});
 
-		this.switch(this._guiData.scene);
+		this._switch(this._guiData.scene);
 
 		document.addEventListener('keydown', (event) => {
 			if (event.key === 'Enter') {
 				if (this.scene === this._scenes.length - 1) {
-					this.switch(0);
+					this._switch(0);
 				} else {
-					this.switch(this.scene + 1);
+					this._switch(this.scene + 1);
 				}
 			}
 		});
 	}
 
-	start() {
-		this._app.start();
-		this._stats.domElement.style.visibility = 'visible';
-		this._gui.domElement.style.visibility = 'visible';
-	}
-
-	switch(index) {
+	_switch(index) {
 		if (index >= 0 && index < this._scenes.length) {
 			for (const scene of this._scenes) {
 				scene.stop();

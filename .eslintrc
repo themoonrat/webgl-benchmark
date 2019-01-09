@@ -10,7 +10,8 @@
 		"sourceType": "module"
 	},
 	"globals": {
-		"PIXI": true
+		"PIXI": true,
+		"Phaser": true
 	},
 	"rules": {
 		"no-console": "off",

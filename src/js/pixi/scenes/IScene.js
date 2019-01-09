@@ -23,13 +23,10 @@ export default class IScene {
 		this._app.ticker.add(this.update, this);
 
 		this._create(objectCount);
-
-		if (this._app.renderer.plugins.prepare) {
-			this._app.renderer.plugins.prepare.upload(this._app.stage);
-		}
 	}
 
 	stop() {
+		this._app.stage.removeChild(this._root);
 		this._app.ticker.remove(this.update, this);
 
 		this._destroy();
