@@ -2,6 +2,7 @@ import "@babel/polyfill";
 import 'url-search-params-polyfill';
 import 'keyboardevent-key-polyfill';
 import '../vendor/polyfill-append.js';
+import '../vendor/polyfill-fixedSeedRandom.js';
 
 import 'normalize.css';
 import '../css/style.css';
@@ -40,11 +41,11 @@ const guiData = {
 storage.set('library', guiData.library);
 
 const guiController = gui.add(guiData, 'library', validLibraries)
-	guiController.onChange((library) => {
-		storage.set('library', library);
+guiController.onChange((library) => {
+	storage.set('library', library);
 
-		window.location.href = storage.url().href;
-	});
+	window.location.href = storage.url().href;
+});
 
 const loadLibrary = guiData.library === 'Phaser' ? loadPhaser : loadPixi;
 

@@ -9,10 +9,10 @@ export default function loadPhaser(stats, gui) {
 		"2.6.2",
 		"3.0.0", "3.1.2", "3.2.1", "3.3.0", "3.4.0", "3.5.1", "3.6.1", "3.7.1", "3.8.0", "3.9.0",
 		"3.10.1", "3.11.0", "3.12.0", "3.13.0", "3.14.0", "3.15.1"
-	]
+	].reverse();
 
 	const guiData = {
-		version: validVersions.includes(storage.get('version')) ? storage.get('version') : validVersions[validVersions.length - 1]
+		version: validVersions.includes(storage.get('version')) ? storage.get('version') : validVersions[0]
 	};
 
 	storage.set('version', guiData.version);

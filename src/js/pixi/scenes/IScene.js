@@ -49,10 +49,6 @@ export default class IScene {
 	}
 
 	_destroy(objectCount = 0) {
-		for (let i = objectCount; i < this._root.children.length; ++i) {
-			this._root.children[i].destroy();
-			this._root.children[i] = null;
-		}
 		this._root.children.length = objectCount;
 	}
 }

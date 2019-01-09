@@ -1,7 +1,7 @@
 /**
  * @typedef {object} RenderConfig
  *
- * @property {boolean} [antialias=false] - When set to `true`, WebGL uses linear interpolation to draw scaled or rotated textures, giving a smooth appearance. When set to `false`, WebGL uses nearest-neighbor interpolation, giving a crisper appearance. `false` also disables antialiasing of the game canvas itself, if the browser supports it, when the game canvas is scaled.
+ * @property {boolean} [antialias=true] - When set to `true`, WebGL uses linear interpolation to draw scaled or rotated textures, giving a smooth appearance. When set to `false`, WebGL uses nearest-neighbor interpolation, giving a crisper appearance. `false` also disables antialiasing of the game canvas itself, if the browser supports it, when the game canvas is scaled.
  * @property {boolean} [pixelArt=false] - Sets `antialias` and `roundPixels` to true. This is the best setting for pixel-art games.
  * @property {boolean} [autoResize=false] - Automatically resize the Game Canvas if you resize the renderer.
  * @property {boolean} [roundPixels=false] - Draw texture-based Game Objects at only whole-integer positions. Game Objects without textures, like Graphics, ignore this property.
@@ -39,7 +39,7 @@ export default class PhaserApp {
 			height: 540,
 			resolution: 1,
 			render: {
-				antialias: false,
+				antialias: true,
 				pixelArt: false,
 				autoResize: false,
 				roundPixels: false,
@@ -64,15 +64,14 @@ export default class PhaserApp {
 
 		this._game.canvas.classList.add('center');
 		document.getElementById('frame').appendChild(this._game.canvas);
-	}
 
-    /**
-     * Render the current stage.
-     */
-	_render() {
-		this._stats.begin();
-		this._renderer.render(this.stage);
-		this._stats.end();
+		this._game.events.on('prerender', () => {
+			this._stats.begin();
+		});
+
+		this._game.events.on('postrender', () => {
+			this._stats.end();
+		});
 	}
 
     /**
