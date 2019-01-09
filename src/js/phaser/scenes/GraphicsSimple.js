@@ -12,13 +12,12 @@ export default class GraphicsSimple extends IScene {
 
 	_create(objectCount) {
 		for (let i = this._children.length; i < objectCount; ++i) {
-			const graphic = new PIXI.Graphics();
+			const rectangle = new Phaser.Geom.Rectangle(-15, -15, 30, 30);
 			const color = this._colors[Math.floor(Math.random() * this._colors.length)];
-			graphic.beginFill(color);
-			graphic.drawRect(-15, -15, 30, 30);
-			graphic.position.set(Math.random() * this._app.screen.width, Math.random() * this._app.screen.height);
-
-			this._app.stage.addChild(graphic);
+			const graphic = this._app.scene.add.graphics({ fillStyle: { color } });
+			graphic.fillRectShape(rectangle);
+			graphic.x = Math.random() * this._app.screen.width;
+			graphic.y = Math.random() * this._app.screen.height
 		}
 	}
 }

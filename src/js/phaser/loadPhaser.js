@@ -24,7 +24,7 @@ export default function loadPhaser(stats, gui) {
 		window.location.href = storage.url().href;
 	});
 
-	const libUrl = `https://cdnjs.cloudflare.com/ajax/libs/phaser/${guiData.version}/phaser.js`;
+	const libUrl = `https://cdnjs.cloudflare.com/ajax/libs/phaser/${guiData.version}/phaser.min.js`;
 
 	loadScript(libUrl)
 		.catch(() => {

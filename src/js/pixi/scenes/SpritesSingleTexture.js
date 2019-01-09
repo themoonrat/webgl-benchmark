@@ -14,7 +14,7 @@ export default class SpritesSingleTexture extends IScene {
 			sprite.anchor.set(0.5);
 			sprite.position.set(Math.random() * this._app.screen.width, Math.random() * this._app.screen.height);
 
-			this._root.addChild(sprite);
+			this._app.stage.addChild(sprite);
 		}
 	}
 }

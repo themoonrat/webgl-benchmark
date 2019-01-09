@@ -27,7 +27,7 @@ export default class GraphicsComplex extends IScene {
 
 			graphic.position.set(Math.random() * this._app.screen.width, Math.random() * this._app.screen.height);
 
-			this._root.addChild(graphic);
+			this._app.stage.addChild(graphic);
 		}
 	}
 

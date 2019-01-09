@@ -13,12 +13,9 @@ export default class Spritesheet extends IScene {
 		let bunnyIndex = 1;
 
 		for (let i = this._children.length; i < objectCount; ++i) {
-			const sprite = PIXI.Sprite.from(`spritesheets/bunny${bunnyIndex}.png`);
+			const sprite = this._app.scene.add.sprite(0, 0, `spritesheets/bunnies.png`, `spritesheets/bunny${bunnyIndex}.png`);
 			bunnyIndex === 12 ? bunnyIndex = 1 : ++bunnyIndex;
-			sprite.anchor.set(0.5);
-			sprite.position.set(Math.random() * this._app.screen.width, Math.random() * this._app.screen.height);
-
-			this._app.stage.addChild(sprite);
+			sprite.setPosition(Math.random() * this._app.screen.width, Math.random() * this._app.screen.height);
 		}
 	}
 }
