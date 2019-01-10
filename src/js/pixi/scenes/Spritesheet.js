@@ -7,14 +7,14 @@ export default class Spritesheet extends IScene {
 		this.title = 'Spritesheet';
 		this.description = 'There are 12 bunnies, but all on one spritesheet. '
 		this.description += 'Since all bunnies come from one texture, the render speed should be comparable to as if just a single texture i used.';
+
+		this._bunnyIndex = 1;
 	}
 
 	_create(objectCount) {
-		let bunnyIndex = 1;
-
 		for (let i = this._children.length; i < objectCount; ++i) {
-			const sprite = PIXI.Sprite.from(`spritesheets/bunny${bunnyIndex}.png`);
-			bunnyIndex === 12 ? bunnyIndex = 1 : ++bunnyIndex;
+			const sprite = PIXI.Sprite.from(`spritesheets/bunny${this._bunnyIndex}.png`);
+			this._bunnyIndex === 12 ? this._bunnyIndex = 1 : ++this._bunnyIndex;
 			sprite.anchor.set(0.5);
 			sprite.position.set(Math.random() * this._app.screen.width, Math.random() * this._app.screen.height);
 

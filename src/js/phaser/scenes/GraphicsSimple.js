@@ -12,10 +12,9 @@ export default class GraphicsSimple extends IScene {
 
 	_create(objectCount) {
 		for (let i = this._children.length; i < objectCount; ++i) {
-			const rectangle = new Phaser.Geom.Rectangle(-15, -15, 30, 30);
-			const color = this._colors[Math.floor(Math.random() * this._colors.length)];
+			const color = this._colors[this._children.length % this._colors.length];
 			const graphic = this._app.scene.add.graphics({ fillStyle: { color } });
-			graphic.fillRectShape(rectangle);
+			graphic.fillRectShape(new Phaser.Geom.Rectangle(-15, -15, 30, 30));
 			graphic.x = Math.random() * this._app.screen.width;
 			graphic.y = Math.random() * this._app.screen.height
 		}

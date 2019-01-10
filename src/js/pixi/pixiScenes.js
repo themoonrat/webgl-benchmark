@@ -1,5 +1,6 @@
 import GraphicsComplex from './scenes/GraphicsComplex.js';
 import GraphicsSimple from './scenes/GraphicsSimple.js';
+import SpritesAndGraphics from './scenes/SpritesAndGraphics.js';
 import Spritesheet from './scenes/Spritesheet.js';
 import SpritesMultipleTextures from './scenes/SpritesMultipleTextures.js';
 import SpritesSingleTexture from './scenes/SpritesSingleTexture.js';
@@ -11,4 +12,5 @@ export default [
 	Spritesheet,
 	GraphicsSimple,
 	GraphicsComplex,
+	SpritesAndGraphics
 ]

@@ -51,6 +51,10 @@ export default class PhaserApp {
 				powerPreference: 'high-performance'
 			},
 			backgroundColor: 0x1099bb,
+			fps: {
+				min: 1,
+				panicMax: 1
+			}
 		}, options);
 
 		this._stats = stats;

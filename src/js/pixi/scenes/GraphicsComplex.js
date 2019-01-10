@@ -7,13 +7,15 @@ export default class GraphicsComplex extends IScene {
 		this.title = 'Graphics: Complex';
 		this.description = 'One of four complex shapes types are used, making more advanced techniques are used to keep performance up.';
 
-		this._colours = [0x29BF12, 0xABFF4F, 0x08BDBD, 0xF21B3F, 0xFF9914];
+		this._colors = [0x29BF12, 0xABFF4F, 0x08BDBD, 0xF21B3F, 0xFF9914];
 	}
 
 	_create(objectCount) {
 		for (let i = this._children.length; i < objectCount; ++i) {
+			const color = this._colors[this._children.length % this._colors.length];
 			const graphic = new PIXI.Graphics();
-			graphic.beginFill(this._colours[this._children.length % this._colours.length]);
+			graphic.beginFill(color);
+
 			const type = this._children.length % 4;
 			if (type === 0) {
 				graphic.drawStar(0, 0, 5, 30, 20, 1);
@@ -29,9 +31,5 @@ export default class GraphicsComplex extends IScene {
 
 			this._app.stage.addChild(graphic);
 		}
-	}
-
-	_createStar() {
-
 	}
 }
