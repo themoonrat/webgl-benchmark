@@ -1,11 +1,12 @@
 {
   "name": "webgl-benchmark",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Benchmark WebGL performance",
   "keywords": [
     "WebGL",
     "Pixi",
     "Pixijs",
+    "Phaser",
     "Benchmark"
   ],
   "author": "Dave Moore",
