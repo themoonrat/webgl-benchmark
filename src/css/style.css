@@ -44,6 +44,7 @@ canvas {
 	max-height: 540px;
 	width: 100%;
 	height: 100%;
+	visibility: hidden;
 }
 
 .center {
@@ -59,14 +60,12 @@ canvas {
 
 #stats {
 	position: absolute;
-	visibility: hidden;
 	left: 0;
 	z-index: 1;
 }
 
 #gui {
 	position: absolute;
-	visibility: hidden;
 	right: 0;
 	z-index: 1;
 	opacity: 0.95;

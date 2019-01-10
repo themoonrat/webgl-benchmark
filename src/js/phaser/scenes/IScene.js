@@ -3,13 +3,17 @@ export default class IScene {
 		this._app = app;
 		this._gui = gui;
 
-		this._children = this._app.stage.children;
+		this._children = this._app.scene.children.list;
 
 		this.title = '';
 		this.description = '';
+
+		this._targetMS = 1000 / 60;
 	}
 
-	update(delta) {
+	update(time, deltaMS) {
+		const delta = deltaMS / this._targetMS;
+
 		for (let i = 0; i < this._children.length; ++i) {
 			this._children[i].rotation += 0.1 * delta;
 		}
@@ -19,13 +23,13 @@ export default class IScene {
 		console.log(`Scene Changed: ${this.title}`);
 		console.log(this.description);
 
-		this._app.ticker.add(this.update, this);
+		this._app.scene.sys.events.on('update', this.update, this);
 
 		this._create(objectCount);
 	}
 
 	stop() {
-		this._app.ticker.remove(this.update, this);
+		this._app.scene.sys.events.off('update', this.update, this);
 
 		this._destroy();
 	}

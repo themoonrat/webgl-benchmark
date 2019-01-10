@@ -10,11 +10,8 @@ export default class SpritesSingleTexture extends IScene {
 
 	_create(objectCount) {
 		for (let i = this._children.length; i < objectCount; ++i) {
-			const sprite = PIXI.Sprite.from('images/bunny1.png');
-			sprite.anchor.set(0.5);
-			sprite.position.set(Math.random() * this._app.screen.width, Math.random() * this._app.screen.height);
-
-			this._app.stage.addChild(sprite);
+			const sprite = this._app.scene.add.sprite(0, 0, 'images/bunny1.png');
+			sprite.setPosition(Math.random() * this._app.screen.width, Math.random() * this._app.screen.height);
 		}
 	}
 }
