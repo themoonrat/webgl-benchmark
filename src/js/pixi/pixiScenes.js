@@ -1,3 +1,5 @@
+import BitmapTextStatic from './scenes/BitmapTextStatic';
+import BitmapTextCounting from './scenes/BitmapTextCounting';
 import CanvasTextStatic from './scenes/CanvasTextStatic';
 import CanvasTextCounting from './scenes/CanvasTextCounting';
 import GraphicsComplex from './scenes/GraphicsComplex.js';
@@ -16,5 +18,7 @@ export default [
 	GraphicsComplex,
 	SpritesAndGraphics,
 	CanvasTextStatic,
-	CanvasTextCounting
+	CanvasTextCounting,
+	BitmapTextStatic,
+	BitmapTextCounting
 ]

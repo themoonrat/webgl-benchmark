@@ -35,6 +35,11 @@ module.exports = merge(common, {
         }),
         new WriteFilePlugin(),
         new CopyWebpackPlugin([
+			{
+                from: 'src/bitmap-fonts/',
+                to: 'bitmap-fonts/',
+                toType: 'dir'
+            },
             {
                 from: 'src/images/',
                 to: 'images/',

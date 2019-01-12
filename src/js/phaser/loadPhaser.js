@@ -39,6 +39,7 @@ export default function loadPhaser(stats, gui) {
 								this.load.image(`images/bunny${i}.png`, `images/bunny${i}.png`);
 							}
 							this.load.atlas('spritesheets/bunnies.png', 'spritesheets/bunnies.png', 'spritesheets/bunnies.json');
+							this.load.bitmapFont('Desyrel', 'bitmap-fonts/desyrel.png', 'bitmap-fonts/desyrel.xml');
 						},
 						create: function () {
 							if (resolvePromise) {

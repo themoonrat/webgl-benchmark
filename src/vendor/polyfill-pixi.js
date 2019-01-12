@@ -12,6 +12,11 @@ export default function pollyfillPixi() {
 			}
 		}
 
+		// move v3 and v4 BitmapText to the v5 area
+		if (!PIXI.BitmapText) {
+			PIXI.BitmapText = PIXI.extras.BitmapText;
+		}
+
 		// v3 does not contain this function natively
 		if (!PIXI.Graphics.prototype.drawStar) {
 			PIXI.Graphics.prototype.drawStar = function (x, y, points, radius, innerRadius, rotation = 0) {

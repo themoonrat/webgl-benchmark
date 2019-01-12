@@ -53,6 +53,7 @@ export default function loadPixi(stats, gui) {
 					.add('images/bunny11.png')
 					.add('images/bunny12.png')
 					.add('spritesheets/bunnies.json')
+					.add('bitmap-fonts/desyrel.xml')
 					.load(() => {
 						if (resolvePromise) {
 							resolvePromise(app);
