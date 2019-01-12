@@ -1,3 +1,5 @@
+import CanvasTextStatic from './scenes/CanvasTextStatic';
+import CanvasTextCounting from './scenes/CanvasTextCounting';
 import GraphicsComplex from './scenes/GraphicsComplex.js';
 import GraphicsSimple from './scenes/GraphicsSimple.js';
 import SpritesAndGraphics from './scenes/SpritesAndGraphics.js';
@@ -12,5 +14,7 @@ export default [
 	Spritesheet,
 	GraphicsSimple,
 	GraphicsComplex,
-	SpritesAndGraphics
+	SpritesAndGraphics,
+	CanvasTextStatic,
+	CanvasTextCounting
 ]

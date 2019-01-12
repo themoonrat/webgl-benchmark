@@ -9,23 +9,17 @@ export default class IScene {
 		this.description = '';
 	}
 
-	update(delta) {
-		for (let i = 0; i < this._children.length; ++i) {
-			this._children[i].rotation += 0.1 * delta;
-		}
-	}
-
 	start(objectCount) {
 		console.log(`Scene Changed: ${this.title}`);
 		console.log(this.description);
 
-		this._app.ticker.add(this.update, this);
+		this._app.ticker.add(this._update, this);
 
 		this._create(objectCount);
 	}
 
 	stop() {
-		this._app.ticker.remove(this.update, this);
+		this._app.ticker.remove(this._update, this);
 
 		this._destroy();
 	}
@@ -35,6 +29,12 @@ export default class IScene {
 			this._create(objectCount);
 		} else if (objectCount < this._children.length) {
 			this._destroy(objectCount)
+		}
+	}
+
+	_update(delta) {
+		for (let i = 0; i < this._children.length; ++i) {
+			this._children[i].rotation += 0.05 * delta;
 		}
 	}
 

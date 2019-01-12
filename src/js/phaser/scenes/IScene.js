@@ -11,25 +11,17 @@ export default class IScene {
 		this._targetMS = 1000 / 60;
 	}
 
-	update(time, deltaMS) {
-		const delta = deltaMS / this._targetMS;
-
-		for (let i = 0; i < this._children.length; ++i) {
-			this._children[i].rotation += 0.1 * delta;
-		}
-	}
-
 	start(objectCount) {
 		console.log(`Scene Changed: ${this.title}`);
 		console.log(this.description);
 
-		this._app.scene.sys.events.on('update', this.update, this);
+		this._app.scene.sys.events.on('update', this._update, this);
 
 		this._create(objectCount);
 	}
 
 	stop() {
-		this._app.scene.sys.events.off('update', this.update, this);
+		this._app.scene.sys.events.off('update', this._update, this);
 
 		this._destroy();
 	}
@@ -39,6 +31,14 @@ export default class IScene {
 			this._create(objectCount);
 		} else if (objectCount < this._children.length) {
 			this._destroy(objectCount)
+		}
+	}
+
+	_update(time, deltaMS) {
+		const delta = deltaMS / this._targetMS;
+
+		for (let i = 0; i < this._children.length; ++i) {
+			this._children[i].rotation += 0.05 * delta;
 		}
 	}
 
