@@ -12,8 +12,9 @@ import Stats from '../vendor/stats.js';
 
 import storage from './storage.js';
 import SceneController from './SceneController.js';
-import loadPixi from './pixi/loadPixi.js';
-import loadPhaser from './phaser/loadPhaser.js';
+import loadPixi from './pixi/load.js';
+import loadPhaser2 from './phaser2/load.js';
+import loadPhaser3 from './phaser3/load.js';
 
 // setup shared stats instance
 const stats = new Stats();
@@ -32,7 +33,7 @@ frameDiv.append(stats.domElement);
 frameDiv.append(gui.domElement);
 document.body.append(frameDiv);
 
-const validLibraries = ['Pixi', 'Phaser'];
+const validLibraries = ['Pixi', 'Phaser2', 'Phaser3'];
 
 const guiData = {
 	library: validLibraries.includes(storage.get('library')) ? storage.get('library') : validLibraries[0]
@@ -47,7 +48,14 @@ guiController.onChange((library) => {
 	window.location.href = storage.url().href;
 });
 
-const loadLibrary = guiData.library === 'Phaser' ? loadPhaser : loadPixi;
+let loadLibrary;
+if (storage.get('library') === 'Phaser2') {
+	loadLibrary = loadPhaser2;
+} else if (storage.get('library') === 'Phaser3') {
+	loadLibrary = loadPhaser3;
+} else {
+	loadLibrary = loadPixi;
+}
 
 // only start the scene controller when the correct version of pixi has loaded
 loadLibrary(stats, gui)

@@ -16,8 +16,8 @@ export default class CanvasTextCounting extends IScene {
 		this._frameCount = 0;
 	}
 
-	_update(time, deltaMS) {
-		super._update(time, deltaMS);
+	_update(delta) {
+		super._update(delta);
 
 		const childrenToCount = this._children.length / 100 || 0;
 		++this._frameCount;
@@ -34,21 +34,17 @@ export default class CanvasTextCounting extends IScene {
 
 		for (let i = this._children.length; i < objectCount; ++i) {
 			const color = this._colors[this._children.length % this._colors.length];
-			const text = this._app.scene.add.text(0, 0, 'WebGL', {
+			const text = this._app.game.add.text(0, 0, 'WebGL', {
 				fontFamily: 'Arial',
 				fontSize: 30,
-				color: `#${color.toString(16)}`,
-				shadow: {
-					offsetX: 1,
-					offsetY: 1,
-					color: '#000000',
-					blur: 1,
-					stroke: true,
-					fill: true
-				}
+				font: '30px Arial', // for backwards compatibility
+				fill: `#${color.toString(16)}`
 			});
-			text.setOrigin(0.5);
-			text.setPosition(Math.random() * this._app.screen.width, Math.random() * this._app.screen.height);
+			text.setShadow(1, 1, 'black', 1);
+			text.anchor.set(0.5);
+			text.position.set(Math.random() * this._app.screen.width, Math.random() * this._app.screen.height);
+
+			this._app.stage.addChild(text);
 		}
 	}
 

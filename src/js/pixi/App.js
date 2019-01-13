@@ -1,5 +1,3 @@
-import { timingSafeEqual } from "crypto";
-
 /**
  * @typedef {Object} PixiConfig
  *
@@ -28,13 +26,32 @@ import { timingSafeEqual } from "crypto";
 /**
  * Convenience class to create a new PIXI application.
  */
-export default class PixiApp {
+export default class App {
     /**
-     * @param {Object} options - The optional renderer parameters
+     * @param {function} resolvePromise - call when assets have preloader
      * @param {Object} stats - stats instance
      */
-	constructor(options, stats) {
-		this._options = options = Object.assign({
+	constructor(resolvePromise, stats) {
+		PIXI.Loader.shared
+			.add('images/bunny1.png')
+			.add('images/bunny2.png')
+			.add('images/bunny3.png')
+			.add('images/bunny4.png')
+			.add('images/bunny5.png')
+			.add('images/bunny6.png')
+			.add('images/bunny7.png')
+			.add('images/bunny8.png')
+			.add('images/bunny9.png')
+			.add('images/bunny10.png')
+			.add('images/bunny11.png')
+			.add('images/bunny12.png')
+			.add('spritesheets/bunnies.json')
+			.add('bitmap-fonts/desyrel.xml')
+			.load(() => {
+				resolvePromise(this);
+			});
+
+		const options = {
 			width: 960,
 			height: 540,
 			transparent: false,
@@ -48,7 +65,7 @@ export default class PixiApp {
 			forceFXAA: false,
 			legacy: false,
 			powerPreference: 'high-performance'
-		}, options);
+		};
 
 		this._stats = stats;
 
@@ -62,7 +79,7 @@ export default class PixiApp {
 		 *
          * @member {PIXI.WebGLRenderer|PIXI.CanvasRenderer}
          */
-		this._renderer = new RendererType(this._options.width, this._options.height, this._options);
+		this._renderer = new RendererType(options.width, options.height, options);
 
         /**
          * The root display container that's rendered.
@@ -72,8 +89,8 @@ export default class PixiApp {
 		this._stage = new PIXI.Container();
 
 		this._screen = {
-			width: this._options.width,
-			height: this._options.height
+			width: options.width,
+			height: options.height
 		}
 
         /**

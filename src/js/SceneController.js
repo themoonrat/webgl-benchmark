@@ -1,7 +1,8 @@
 import storage from './storage.js';
 
-import pixiScenes from './pixi/pixiScenes.js'
-import phaserScenes from './phaser/phaserScenes.js'
+import pixiScenes from './pixi/scenes.js'
+import phaser2Scenes from './phaser2/scenes.js'
+import phaser3Scenes from './phaser3/scenes.js'
 
 export default class SceneController {
 	constructor(app, stats, gui) {
@@ -11,7 +12,14 @@ export default class SceneController {
 
 		this._scenes = [];
 
-		const sceneList = storage.get('library') === 'Phaser' ? phaserScenes : pixiScenes;
+		let sceneList;
+		if (storage.get('library') === 'Phaser2') {
+			sceneList = phaser2Scenes;
+		} else if (storage.get('library') === 'Phaser3') {
+			sceneList = phaser3Scenes;
+		} else {
+			sceneList = pixiScenes;
+		}
 
 		for (const Scene of sceneList) {
 			this._scenes.push(new Scene(app, gui));

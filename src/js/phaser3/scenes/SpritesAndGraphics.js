@@ -17,17 +17,20 @@ export default class SpritesAndGraphics extends IScene {
 			if (i % 20 < 7) {
 				const sprite = this._app.scene.add.sprite(0, 0, `images/bunny${this._bunnyIndex}.png`);
 				this._bunnyIndex === 12 ? this._bunnyIndex = 1 : ++this._bunnyIndex;
+
 				sprite.setPosition(Math.random() * this._app.screen.width, Math.random() * this._app.screen.height);
 			} else if (i % 20 < 14) {
 				const sprite = this._app.scene.add.sprite(0, 0, `spritesheets/bunnies.png`, `spritesheets/bunny${this._bunnyIndex}.png`);
 				this._bunnyIndex === 12 ? this._bunnyIndex = 1 : ++this._bunnyIndex;
+
 				sprite.setPosition(Math.random() * this._app.screen.width, Math.random() * this._app.screen.height);
 			} else if (i % 20 < 18) {
 				const color = this._colors[this._children.length % this._colors.length];
-				const graphic = this._app.scene.add.graphics({ fillStyle: { color } });
-				graphic.fillRectShape(new Phaser.Geom.Rectangle(-15, -15, 30, 30));
-				graphic.x = Math.random() * this._app.screen.width;
-				graphic.y = Math.random() * this._app.screen.height
+				const graphic = this._app.game.add.graphics();
+				graphic.beginFill(color);
+				graphic.drawRect(-15, -15, 30, 30);
+
+				graphic.setPosition(Math.random() * this._app.screen.width, Math.random() * this._app.screen.height);
 			} else {
 				const color = this._colors[this._children.length % this._colors.length];
 				const graphic = this._app.scene.add.graphics({ fillStyle: { color } });

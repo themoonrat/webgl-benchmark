@@ -13,8 +13,8 @@ export default class BitmapTextCounting extends IScene {
 		this._frameCount = 0;
 	}
 
-	_update(time, deltaMS) {
-		super._update(time, deltaMS);
+	_update(delta) {
+		super._update(delta);
 
 		const childrenToCount = this._children.length / 100 || 0;
 		++this._frameCount;

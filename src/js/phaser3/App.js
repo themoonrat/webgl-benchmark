@@ -28,13 +28,13 @@
 /**
  * Convenience class to create a new Phaser application.
  */
-export default class PhaserApp {
+export default class App {
     /**
-     * @param {PhaserConfig} options - The renderer parameters
+     * @param {function} resolvePromise - call when assets have preloader
      * @param {Object} stats - stats instance
      */
-	constructor(options, stats) {
-		this._options = options = Object.assign({
+	constructor(resolvePromise, stats) {
+		const options = {
 			width: 960,
 			height: 540,
 			resolution: 1,
@@ -54,28 +54,41 @@ export default class PhaserApp {
 			fps: {
 				min: 1,
 				panicMax: 1
+			},
+			scene: {
+				preload: () => {
+					const scene = this._game.scene.scenes[0];
+					for (let i = 1; i <= 12; ++i) {
+						scene.load.image(`images/bunny${i}.png`, `images/bunny${i}.png`);
+					}
+					scene.load.atlas('spritesheets/bunnies.png', 'spritesheets/bunnies.png', 'spritesheets/bunnies.json');
+					scene.load.bitmapFont('Desyrel', 'bitmap-fonts/desyrel.png', 'bitmap-fonts/desyrel.xml');
+				},
+				create: () => {
+					this._game.canvas.classList.add('center');
+					document.getElementById('frame').appendChild(this._game.canvas);
+
+					this._game.events.on('prerender', () => {
+						this._stats.begin();
+					});
+
+					this._game.events.on('postrender', () => {
+						this._stats.end();
+					});
+
+					resolvePromise(this);
+				}
 			}
-		}, options);
+		}
 
 		this._stats = stats;
 
-		this._game = new Phaser.Game(this._options);
+		this._game = new Phaser.Game(options);
 
 		this._screen = {
-			width: this._options.width,
-			height: this._options.height
+			width: options.width,
+			height: options.height
 		}
-
-		this._game.canvas.classList.add('center');
-		document.getElementById('frame').appendChild(this._game.canvas);
-
-		this._game.events.on('prerender', () => {
-			this._stats.begin();
-		});
-
-		this._game.events.on('postrender', () => {
-			this._stats.end();
-		});
 	}
 
     /**
@@ -86,6 +99,16 @@ export default class PhaserApp {
      */
 	get screen() {
 		return this._screen;
+	}
+
+	/**
+     * The Phaser game object
+	 *
+     * @member {Object}
+     * @readonly
+     */
+	get game() {
+		return this._game;
 	}
 
 	/**

@@ -1,7 +1,7 @@
 {
   "name": "webgl-benchmark",
-  "version": "1.1.0",
-  "description": "Benchmark WebGL performance",
+  "version": "1.2.0",
+  "description": "Benchmark WebGL performance using different JavaScript rendering/game engines, such as Pixi and Phaser.",
   "keywords": [
     "WebGL",
     "Pixi",
@@ -50,7 +50,6 @@
     "@babel/polyfill": "^7.2.5",
     "dat.gui": "^0.7.4",
     "keyboardevent-key-polyfill": "^1.1.0",
-    "lodash": "^4.17.11",
     "normalize.css": "^8.0.1",
     "url-search-params-polyfill": "^5.0.0"
   }
