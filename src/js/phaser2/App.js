@@ -13,6 +13,9 @@ export default class App {
 			backgroundColor: 0x1099bb,
 			scene: {
 				preload: () => {
+					this._game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+					this.canvas.classList.add('center');
+
 					for (let i = 1; i <= 12; ++i) {
 						this._game.load.image(`images/bunny${i}.png`, `images/bunny${i}.png`);
 					}
@@ -21,8 +24,6 @@ export default class App {
 				},
 				create: () => {
 					if (resolvePromise) {
-						this._game.canvas.classList.add('center');
-
 						this._game.state.preRender = () => {
 							this._stats.begin();
 						}
@@ -47,6 +48,10 @@ export default class App {
 			width: options.width,
 			height: options.height
 		}
+	}
+
+	get canvas() {
+		return this._game.canvas;
 	}
 
     /**

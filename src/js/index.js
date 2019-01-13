@@ -62,4 +62,27 @@ loadLibrary(stats, gui)
 	.then((app) => {
 		new SceneController(app, stats, gui);
 		frameDiv.style.visibility = 'visible';
+
+		resize(app);
+		window.addEventListener('resize', (e) => {
+			resize(app);
+		})
 	})
+
+
+function resize(app) {
+	let width = Math.min(window.innerWidth, 960);
+	let height = Math.min(window.innerHeight, 540);
+
+	const ratio = width / height;
+	const requiredRatio = 960 / 540;
+
+	if (ratio > requiredRatio) {
+		width = height * requiredRatio;
+	} else {
+		height = width / requiredRatio;
+	}
+
+	frameDiv.style.width = app.canvas.style.width = `${width}px`;
+	frameDiv.style.height = app.canvas.style.height = `${height}px`;
+}

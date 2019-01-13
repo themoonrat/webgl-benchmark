@@ -48,7 +48,7 @@ export default function loadPhaser(stats, gui) {
 			if (window.Phaser) {
 				polyfillPhaser2();
 
-				window.app = new App(resolvePromise, stats);
+				new App(resolvePromise, stats);
 			}
 		});
 

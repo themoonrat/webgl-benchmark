@@ -57,6 +57,9 @@ export default class App {
 			},
 			scene: {
 				preload: () => {
+					this.canvas.classList.add('center');
+					document.getElementById('frame').appendChild(this.canvas);
+
 					const scene = this._game.scene.scenes[0];
 					for (let i = 1; i <= 12; ++i) {
 						scene.load.image(`images/bunny${i}.png`, `images/bunny${i}.png`);
@@ -65,9 +68,6 @@ export default class App {
 					scene.load.bitmapFont('Desyrel', 'bitmap-fonts/desyrel.png', 'bitmap-fonts/desyrel.xml');
 				},
 				create: () => {
-					this._game.canvas.classList.add('center');
-					document.getElementById('frame').appendChild(this._game.canvas);
-
 					this._game.events.on('prerender', () => {
 						this._stats.begin();
 					});
@@ -89,6 +89,10 @@ export default class App {
 			width: options.width,
 			height: options.height
 		}
+	}
+
+	get canvas() {
+		return this._game.canvas;
 	}
 
     /**

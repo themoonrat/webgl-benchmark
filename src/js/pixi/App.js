@@ -102,8 +102,8 @@ export default class App {
 		this.ticker.add(this._render, this);
 		this.ticker.start();
 
-		this._renderer.view.classList.add('center');
-		document.getElementById('frame').appendChild(this._renderer.view);
+		this.canvas.classList.add('center');
+		document.getElementById('frame').appendChild(this.canvas);
 	}
 
     /**
@@ -113,6 +113,10 @@ export default class App {
 		this._stats.begin();
 		this._renderer.render(this.stage);
 		this._stats.end();
+	}
+
+	get canvas() {
+		return this._renderer.view;
 	}
 
 	/**
