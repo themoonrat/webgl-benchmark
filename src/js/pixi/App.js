@@ -79,7 +79,13 @@ export default class App {
 		 *
          * @member {PIXI.WebGLRenderer|PIXI.CanvasRenderer}
          */
-		this._renderer = new RendererType(options.width, options.height, options);
+		this._renderer;
+
+		if (PIXI.VERSION[0] === '5') {
+			this._renderer = new RendererType(options);
+		} else {
+			this._renderer = new RendererType(options.width, options.height, options);
+		}
 
         /**
          * The root display container that's rendered.

@@ -24,7 +24,7 @@ module.exports = merge(common, {
         filename: 'js/[name].js'
     },
     plugins: [
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: 'WebGL Benchmark',
             meta: {
