@@ -1,4 +1,5 @@
-import "@babel/polyfill";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 import 'url-search-params-polyfill';
 import 'keyboardevent-key-polyfill';
 import '../vendor/polyfill-append.js';
