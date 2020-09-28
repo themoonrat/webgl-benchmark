@@ -2,10 +2,10 @@
  * Convenience class to create a new Phaser application.
  */
 export default class App {
-    /**
-     * @param {function} resolvePromise - call when assets have preloader
-     * @param {Object} stats - stats instance
-     */
+	/**
+	 * @param {function} resolvePromise - call when assets have preloader
+	 * @param {Object} stats - stats instance
+	 */
 	constructor(resolvePromise, stats) {
 		const options = {
 			width: 960,
@@ -54,32 +54,32 @@ export default class App {
 		return this._game.canvas;
 	}
 
-    /**
-     * Reference to the renderer's screen rectangle. Its safe to use as filterArea or hitArea for whole screen
+	/**
+	 * Reference to the renderer's screen rectangle. Its safe to use as filterArea or hitArea for whole screen
 	 *
-     * @member {Object}
-     * @readonly
-     */
+	 * @member {Object}
+	 * @readonly
+	 */
 	get screen() {
 		return this._screen;
 	}
 
 	/**
-     * The Phaser game object
+	 * The Phaser game object
 	 *
-     * @member {Object}
-     * @readonly
-     */
+	 * @member {Object}
+	 * @readonly
+	 */
 	get game() {
 		return this._game;
 	}
 
 	/**
-     * The single scene that we use for our tests
+	 * The single scene that we use for our tests
 	 *
-     * @member {Object}
-     * @readonly
-     */
+	 * @member {Object}
+	 * @readonly
+	 */
 	get stage() {
 		return this._game.stage;
 	}

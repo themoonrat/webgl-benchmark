@@ -1,6 +1,7 @@
 // Source: https://github.com/jserz/js_piece/blob/master/DOM/ParentNode/append()/append().md
 ((arr) => {
 	arr.forEach(function (item) {
+		// eslint-disable-next-line no-prototype-builtins
 		if (item.hasOwnProperty('append')) {
 			return;
 		}
