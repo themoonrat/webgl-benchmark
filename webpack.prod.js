@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 
@@ -11,6 +10,9 @@ module.exports = merge(common, {
 	mode: 'production',
 	output: {
 		filename: 'js/[name].js'
+	},
+	optimization: {
+		moduleIds: 'deterministic'
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
@@ -46,8 +48,7 @@ module.exports = merge(common, {
 		}),
 		new MiniCssExtractPlugin({
 			filename: "css/[name].css"
-		}),
-		new webpack.HashedModuleIdsPlugin()
+		})
 	],
 	module: {
 		rules: [

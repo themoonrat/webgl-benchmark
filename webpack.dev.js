@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const path = require('path');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
@@ -13,15 +12,20 @@ module.exports = merge(common, {
 	mode: 'development',
 	devtool: 'source-map',
 	devServer: {
-		contentBase: path.join(__dirname, 'dist'),
+		static: path.join(__dirname, 'dist'),
 		open: true,
-		overlay: {
-			warnings: true,
-			errors: true
+		client: {
+			overlay: {
+				warnings: true,
+				errors: true
+			}
 		}
 	},
 	output: {
 		filename: 'js/[name].js'
+	},
+	optimization: {
+		moduleIds: 'deterministic'
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
@@ -55,8 +59,7 @@ module.exports = merge(common, {
 		}),
 		new MiniCssExtractPlugin({
 			filename: "css/[name].css"
-		}),
-		new webpack.HashedModuleIdsPlugin()
+		})
 	],
 	module: {
 		rules: [
